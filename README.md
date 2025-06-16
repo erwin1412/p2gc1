@@ -90,4 +90,14 @@ Deadline : Diinformasikan oleh instruktur saat briefing GC. Keterlambatan pengum
 Informasi yang tidak dicantumkan pada file ini harap dipastikan/ditanyakan kembali kepada instruktur. Kesalahan asumsi dari peserta mungkin akan menyebabkan kesalahan pemahaman requirement dan mengakibatkan pengurangan nilai.
 
 ### Deployment Notes
-- Deployed url: _________ (isi dengan url hasil deployment anda)
+- Deployed url: https://test.ern.my.id
+Berlaku hingga 30/06/2025
+
+
+List Endpoint Karyawan (/employees)
+Method	URL	Deskripsi
+GET	https://test.ern.my.id/employees	Menampilkan semua data karyawan (hanya id, name, email)
+GET	https://test.ern.my.id/employees/{id}	Menampilkan data karyawan berdasarkan ID
+POST	https://test.ern.my.id/employees	Menyimpan data karyawan baru
+PUT	https://test.ern.my.id/employees/{id}	Memperbarui data karyawan berdasarkan ID
+DELETE	https://test.ern.my.id/employees/{id}	Menghapus data karyawan berdasarkan ID

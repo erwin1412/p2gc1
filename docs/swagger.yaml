@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  title: Employee Management API
+  version: 1.0.0
+  description: RESTful API untuk manajemen data karyawan perusahaan.
+
+servers:
+  - url: https://test.ern.my.id
+    description: Production server (Heroku with custom domain)
+
+paths:
+  /employees:
+    post:
+      summary: Menambahkan data karyawan baru
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, email, phone]
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+      responses:
+        '201':
+          description: Data karyawan berhasil dibuat
+        '400':
+          description: Input tidak valid
+
+    get:
+      summary: Menampilkan semua data karyawan
+      responses:
+        '200':
+          description: Daftar karyawan
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    email:
+                      type: string
+
+  /employees/{id}:
+    get:
+      summary: Menampilkan data karyawan berdasarkan ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Data karyawan ditemukan
+        '404':
+          description: Data tidak ditemukan
+
+    put:
+      summary: Memperbarui data karyawan berdasarkan ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, email, phone]
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+      responses:
+        '200':
+          description: Data berhasil diperbarui
+        '400':
+          description: Request invalid
+        '404':
+          description: Karyawan tidak ditemukan
+
+    delete:
+      summary: Menghapus data karyawan
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Data berhasil dihapus
+        '404':
+          description: Karyawan tidak ditemukan
